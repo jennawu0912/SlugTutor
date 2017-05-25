@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1091988588120-dksngpc5698ecv06ncpaif3lakkm1esl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.soham.slugtutor",
+            "certificate_hash": "833e4c6c71bad37a90572ae693b87f68d8587c72"
+          }
+        },
+        {
           "client_id": "1091988588120-uq38jh0hspt8ihfk8s8ckkablj13tadg.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091988588120-uq38jh0hspt8ihfk8s8ckkablj13tadg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
