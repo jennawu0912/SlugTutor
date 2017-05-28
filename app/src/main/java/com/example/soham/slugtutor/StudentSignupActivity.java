@@ -32,8 +32,8 @@ public class StudentSignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String email = emailText.getText().toString();
-                String password = passwordText.getText().toString();
+                final String email = emailText.getText().toString();
+                final String password = passwordText.getText().toString();
 
                 String ucscEmail = email.substring(email.indexOf("@")+1);
 
@@ -64,7 +64,10 @@ public class StudentSignupActivity extends AppCompatActivity {
                                     Toast.makeText(StudentSignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(StudentSignupActivity.this, MainActivity.class));
+                                    auth.signInWithEmailAndPassword(email, password);
+                                    Toast.makeText(StudentSignupActivity.this, "Signed In" + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(StudentSignupActivity.this, ExtendedSignUp.class));
                                     finish();
                                 }
                             }
