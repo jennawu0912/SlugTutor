@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonStudent = (Button) findViewById(R.id.makeStudent);
+        Button buttonStudent = (Button) findViewById(R.id.SignUp);
         buttonStudent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent studentActivity = new Intent(MainActivity.this, StudentSignupActivity.class);
