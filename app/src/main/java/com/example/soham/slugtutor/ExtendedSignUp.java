@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -26,11 +27,12 @@ public class ExtendedSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extended_sign_up);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        /*
         Spinner dropdown1 = (Spinner)findViewById(R.id.ClassSelector1);
         String[] items1 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items1);
@@ -45,8 +47,19 @@ public class ExtendedSignUp extends AppCompatActivity {
         String[] items3 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
+        */
+
+        Button buttonStudent = (Button) findViewById(R.id.SubmitButton);
+        buttonStudent.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent studentActivity = new Intent(ExtendedSignUp.this, FakeMain.class);
+                ExtendedSignUp.this.startActivity(studentActivity);
+            }
+        });
     }
 
+
+    /**
     protected void logout(View view){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -61,7 +74,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         else{
             Log.d("Failure","No user logged in");
         }
-    }
+    }**/
 
     public void writeData (View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

@@ -28,6 +28,14 @@ public class StudentSignupActivity extends AppCompatActivity {
         final EditText emailText = (EditText) findViewById(R.id.editEmail);
         final EditText passwordText = (EditText) findViewById(R.id.editPassword);
         Button btnSignUp = (Button) findViewById(R.id.submitButton);
+        Button btnLogin = (Button) findViewById(R.id.LogIn);
+
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent studentActivity = new Intent(StudentSignupActivity.this, MainActivity.class);
+                StudentSignupActivity.this.startActivity(studentActivity);
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
