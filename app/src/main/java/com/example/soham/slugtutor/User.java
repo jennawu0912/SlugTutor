@@ -5,19 +5,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class User {
 
-    FirebaseAuth auth = FirebaseAuth.getInstance();
+    public String Class1;
+    public String Class2;
+    public String Class3;
+    public String FirstName;
+    public String LastName;
 
-    public String getCurrentID(FirebaseAuth auth){
-        FirebaseUser user = auth.getCurrentUser();
-        return (user.getUid());
-    }
-
-    public String getEmail (FirebaseAuth auth){
-        FirebaseUser user = auth.getCurrentUser();
-        return (user.getEmail());
-    }
-
-    public void userLogout(){
-
-    }
+    public User(){}
 }
