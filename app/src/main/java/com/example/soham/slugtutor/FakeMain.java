@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,8 +34,7 @@ public class FakeMain extends AppCompatActivity{
     private DatabaseReference mDatabaseRef;
 
     private ValueEventListener mPostListener;
-    private String firstname;
-    private List<String> info;
+
 
     NavigationView navigationView;
     @Override
@@ -91,7 +91,8 @@ public class FakeMain extends AppCompatActivity{
     @Override
     public void onStart() {
         super.onStart();
-
+        String firstname;
+        final List<String> info = new ArrayList<String>();
         // Add value event listener to the post
         // [START post_value_event_listener]
         ValueEventListener postListener = new ValueEventListener() {
@@ -101,19 +102,19 @@ public class FakeMain extends AppCompatActivity{
                 for (DataSnapshot msgSnapShot: dataSnapshot.getChildren()) {
                     String temp = msgSnapShot.getValue(String.class);
                     Log.d("first name: ", temp);
-                    //info.add(temp);
-
+                    info.add(temp);
                 }
-                long count = dataSnapshot.getChildrenCount();
-                Log.d("test: ", Long.toString(count));
+                TextView user_first = (TextView) findViewById(R.id.display_first);
+                TextView user_last = (TextView) findViewById(R.id.display_last);
+                TextView user_major = (TextView) findViewById(R.id.display_major);
+                TextView user_phone = (TextView) findViewById(R.id.display_phone);
+                TextView user_course = (TextView) findViewById(R.id.display_course);
 
-
-
-                /**
-                Map<String, String> info = dataSnapshot.getValue(Map.class);
-                Log.d("first name: ", info.get("firstname"));
-                Log.d("last name: ", info.get("lastname"));
-                 **/
+                user_first.setText(info.get(1));
+                user_last.setText(info.get(2));
+                user_major.setText(info.get(3));
+                user_phone.setText(info.get(4));
+                user_course.setText(info.get(0));
 
             }
 
@@ -133,12 +134,13 @@ public class FakeMain extends AppCompatActivity{
         // Keep copy of post listener so we can remove it when app stops
         mPostListener = postListener;
 
+
     }
 
     protected void logout(){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (auth != null){
+        if (user != null){
             Log.d("Success","User signed out");
             String uid = user.getUid();
             Log.d("User id", uid);
