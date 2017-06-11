@@ -30,7 +30,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        //final FirebaseAuth auth = FirebaseAuth.getInstance();
 
         /*
         Spinner dropdown1 = (Spinner)findViewById(R.id.ClassSelector1);
