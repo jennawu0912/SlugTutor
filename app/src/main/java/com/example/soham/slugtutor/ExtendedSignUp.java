@@ -52,6 +52,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         Button buttonStudent = (Button) findViewById(R.id.SubmitButton);
         buttonStudent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                writeData();
                 Intent studentActivity = new Intent(ExtendedSignUp.this, FakeMain.class);
                 ExtendedSignUp.this.startActivity(studentActivity);
             }
@@ -76,20 +77,31 @@ public class ExtendedSignUp extends AppCompatActivity {
         }
     }**/
 
-    public void writeData (View view){
+    public void writeData (){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Log.d("User ID",uid);
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
+        EditText major = (EditText) findViewById(R.id.Major);
+        EditText phoneNum = (EditText) findViewById(R.id.PhoneNumber);
+        EditText course = (EditText) findViewById(R.id.addCourse);
         String first = firstName.getText().toString();
         String last = lastName.getText().toString();
+        String user_major = major.getText().toString();
+        String phone = phoneNum.getText().toString();
+        String user_course = course.getText().toString();
         Log.d("First", firstName.getText().toString());
         Log.d("Last", lastName.getText().toString());
+        Log.d("Phone", phoneNum.getText().toString());
+        Log.d("Major", major.getText().toString());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Log.d("Database", mDatabase.toString());
-        mDatabase.child(uid).setValue(first);
-        mDatabase.child(uid).setValue(last);
+        mDatabase.child(uid).child("firstname").setValue(first);
+        mDatabase.child(uid).child("lastname").setValue(last);
+        mDatabase.child(uid).child("phonenumber").setValue(phone);
+        mDatabase.child(uid).child("major").setValue(user_major);
+        mDatabase.child(uid).child("course").setValue(user_course);
 
     }
 }
