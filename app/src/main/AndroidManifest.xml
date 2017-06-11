@@ -19,9 +19,16 @@
         <activity
             android:name=".ExtendedSignUp"
             android:label="@string/title_activity_extended_sign_up"
+
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".FakeMain" />
+
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".StudentView" />
+        <activity android:name=".TutorView" />
+        <activity android:name=".MainStudentView"></activity>
+
     </application>
 
 </manifest>
