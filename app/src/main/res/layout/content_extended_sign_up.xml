@@ -70,7 +70,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="109dp" />
+        android:layout_marginBottom="32dp"
+        app:layout_constraintHorizontal_bias="0.28" />
 
     <Button
         android:id="@+id/Logout"
@@ -81,6 +82,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="39dp" />
+        android:layout_marginBottom="32dp"
+        app:layout_constraintHorizontal_bias="0.716" />
+
+    <RadioGroup
+        android:layout_width="239dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="123dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" >
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Student" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Parent" />
+    </RadioGroup>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.example.soham.slugtutor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,8 +26,6 @@ public class ExtendedSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extended_sign_up);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -66,17 +64,21 @@ public class ExtendedSignUp extends AppCompatActivity {
     public void writeData (View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        Log.d("User ID",uid);
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
-        String first = firstName.getText().toString();
-        String last = lastName.getText().toString();
-        Log.d("First", firstName.getText().toString());
-        Log.d("Last", lastName.getText().toString());
+        Spinner class1 = (Spinner) findViewById(R.id.ClassSelector1);
+        Spinner class2 = (Spinner) findViewById(R.id.ClassSelector2);
+        Spinner class3 = (Spinner) findViewById(R.id.ClassSelector3);
+        String firstNameStr = firstName.getText().toString();
+        String lastNameStr = lastName.getText().toString();
+        String class1Str = class1.getSelectedItem().toString();
+        String class2Str = class2.getSelectedItem().toString();
+        String class3Str = class3.getSelectedItem().toString();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d("Database", mDatabase.toString());
-        mDatabase.child(uid).setValue(first);
-        mDatabase.child(uid).setValue(last);
-
+        mDatabase.child(uid).child("FirstName").setValue(firstNameStr);
+        mDatabase.child(uid).child("LastName").setValue(lastNameStr);
+        mDatabase.child(uid).child("Class1").setValue(class1Str);
+        mDatabase.child(uid).child("Class2").setValue(class2Str);
+        mDatabase.child(uid).child("Class3").setValue(class3Str);
     }
 }
