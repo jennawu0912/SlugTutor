@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#e0fbff"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.soham.slugtutor.ExtendedSignUp"
+    tools:context="com.example.soham.slugtutor.Start_Area.ExtendedSignUp"
     tools:showIn="@layout/activity_extended_sign_up">
 
     <TextView

@@ -73,7 +73,7 @@ public class SearchActivity extends AppCompatActivity{
         }
     }
     private static final String TAG = "ContactActivity";
-    private static final int ACTIVITY_NUM = 3;
+    private static final int ACTIVITY_NUM = 1;
     private Context mContext = SearchActivity.this;
 
     @Override

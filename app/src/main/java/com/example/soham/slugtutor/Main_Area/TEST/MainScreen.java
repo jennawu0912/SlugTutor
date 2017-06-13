@@ -1,12 +1,12 @@
-package com.example.soham.slugtutor.Main_Area;
+package com.example.soham.slugtutor.Main_Area.TEST;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.soham.slugtutor.Main_Area.NavigationHelper;
 import com.example.soham.slugtutor.R;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -14,13 +14,13 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
  * Created by David Trang on 6/11/2017.
  */
 
-public class SettingActivity extends AppCompatActivity{
-    private static final String TAG = "SettingActivity";
+public class MainScreen extends AppCompatActivity{
+    private static final String TAG = "MainActivity";
     private static final int ACTIVITY_NUM = 2;
-    private Context mContext = SettingActivity.this;
+    private Context mContext = MainScreen.this;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         setupBottomNavigationView();
