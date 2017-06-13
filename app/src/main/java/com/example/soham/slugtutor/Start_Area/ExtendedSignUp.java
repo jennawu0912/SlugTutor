@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ExtendedSignUp extends AppCompatActivity {
 
+    final String USERGROUP = "JennasUsers";
+
     private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class ExtendedSignUp extends AppCompatActivity {
     }**/
 
     public void writeData (){
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Log.d("User ID",uid);
@@ -92,11 +95,11 @@ public class ExtendedSignUp extends AppCompatActivity {
         Log.d("Major", major.getText().toString());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Log.d("Database", mDatabase.toString());
-        mDatabase.child(uid).child("firstname").setValue(first);
-        mDatabase.child(uid).child("lastname").setValue(last);
-        mDatabase.child(uid).child("phonenumber").setValue(phone);
-        mDatabase.child(uid).child("major").setValue(user_major);
-        mDatabase.child(uid).child("course").setValue(user_course);
+        mDatabase.child(USERGROUP).child(uid).child("firstname").setValue(first);
+        mDatabase.child(USERGROUP).child(uid).child("lastname").setValue(last);
+        mDatabase.child(USERGROUP).child(uid).child("phonenumber").setValue(phone);
+        mDatabase.child(USERGROUP).child(uid).child("major").setValue(user_major);
+        mDatabase.child(USERGROUP).child(uid).child("course").setValue(user_course);
 
     }
 }

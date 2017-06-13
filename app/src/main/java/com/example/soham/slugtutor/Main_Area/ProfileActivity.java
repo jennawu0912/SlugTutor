@@ -37,6 +37,8 @@ public class ProfileActivity extends AppCompatActivity{
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mPostListener;
 
+    final String USERGROUP = "JennasUsers";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity{
         }
 
         // Initialize Database
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(uid);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(USERGROUP).child(uid);
 
         Button buttonLogout = (Button) findViewById(R.id.Logout);
         buttonLogout.setOnClickListener(new View.OnClickListener(){
