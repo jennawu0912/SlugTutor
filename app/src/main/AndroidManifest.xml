@@ -4,28 +4,36 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
+        android:logo="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Start_Area.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentSignupActivity" />
-        <activity android:name=".Main_Area.ContactActivity"></activity>
-        <activity android:name=".Main_Area.MainScreen"></activity>
+        <activity android:name=".Start_Area.StudentSignupActivity" />
+        <activity
+            android:name=".Start_Area.ExtendedSignUp"
+            android:label="@string/title_activity_extended_sign_up"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".TEST_STUFF.FakeMain" />
+
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SOHAM_CRAP.StudentView" />
+        <activity android:name=".SOHAM_CRAP.TutorView" />
+        <activity android:name=".SOHAM_CRAP.MainStudentView"></activity>
+        <activity android:name=".Main_Area.TEST.ContactActivity"></activity>
+        <activity android:name=".Main_Area.TEST.MainScreen"></activity>
         <activity android:name=".Main_Area.ProfileActivity"></activity>
         <activity android:name=".Main_Area.Search.SearchActivity"></activity>
         <activity android:name=".Main_Area.SettingActivity"></activity>
-        <activity
-            android:name=".ExtendedSignUp"
-            android:label="@string/title_activity_extended_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+
+        <!--<activity android:name=".FakeMain" />-->
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e0fbff"
-    tools:context="com.example.soham.slugtutor.StudentSignupActivity">
+    tools:context="com.example.soham.slugtutor.Start_Area.StudentSignupActivity">
 
     <EditText
         android:id="@+id/editEmail"

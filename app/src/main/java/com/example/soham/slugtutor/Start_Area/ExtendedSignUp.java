@@ -1,24 +1,19 @@
-package com.example.soham.slugtutor;
+package com.example.soham.slugtutor.Start_Area;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
+import com.example.soham.slugtutor.Main_Area.Search.SearchActivity;
+import com.example.soham.slugtutor.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.io.Console;
 
 public class ExtendedSignUp extends AppCompatActivity {
 
@@ -27,7 +22,8 @@ public class ExtendedSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extended_sign_up);
-
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         //final FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -52,7 +48,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         buttonStudent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 writeData();
-                Intent studentActivity = new Intent(ExtendedSignUp.this, FakeMain.class);
+                Intent studentActivity = new Intent(ExtendedSignUp.this, SearchActivity.class);
                 ExtendedSignUp.this.startActivity(studentActivity);
             }
         });
@@ -79,6 +75,7 @@ public class ExtendedSignUp extends AppCompatActivity {
     public void writeData (){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
+        Log.d("User ID",uid);
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
         EditText major = (EditText) findViewById(R.id.Major);
@@ -100,5 +97,6 @@ public class ExtendedSignUp extends AppCompatActivity {
         mDatabase.child(uid).child("phonenumber").setValue(phone);
         mDatabase.child(uid).child("major").setValue(user_major);
         mDatabase.child(uid).child("course").setValue(user_course);
+
     }
 }
