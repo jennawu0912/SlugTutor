@@ -1,4 +1,4 @@
-package com.example.soham.slugtutor;
+package com.example.soham.slugtutor.Start_Area;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,11 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.soham.slugtutor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class StudentSignupActivity extends AppCompatActivity {
 
@@ -28,6 +28,14 @@ public class StudentSignupActivity extends AppCompatActivity {
         final EditText emailText = (EditText) findViewById(R.id.editEmail);
         final EditText passwordText = (EditText) findViewById(R.id.editPassword);
         Button btnSignUp = (Button) findViewById(R.id.submitButton);
+        Button btnLogin = (Button) findViewById(R.id.LogIn);
+
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent studentActivity = new Intent(StudentSignupActivity.this, MainActivity.class);
+                StudentSignupActivity.this.startActivity(studentActivity);
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,6 +82,13 @@ public class StudentSignupActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

@@ -8,18 +8,6 @@
         />
 
     <item
-        android:title="Contact"
-        android:id="@+id/ic_contact"
-        android:icon="@drawable/ic_contact"
-        />
-
-    <item
-        android:title="Home"
-        android:id="@+id/ic_home"
-        android:icon="@drawable/ic_home"
-        />
-
-    <item
         android:title="Search"
         android:id="@+id/ic_search"
         android:icon="@drawable/ic_search"
@@ -30,5 +18,17 @@
         android:id="@+id/ic_setting"
         android:icon="@drawable/ic_setting"
         />
+
+    <!--<item-->
+        <!--android:title="Contact"-->
+        <!--android:id="@+id/ic_contact"-->
+        <!--android:icon="@drawable/ic_contact"-->
+        <!--/>-->
+
+    <!--<item-->
+        <!--android:title="Home"-->
+        <!--android:id="@+id/ic_home"-->
+        <!--android:icon="@drawable/ic_home"-->
+        <!--/>-->
 
 </menu>

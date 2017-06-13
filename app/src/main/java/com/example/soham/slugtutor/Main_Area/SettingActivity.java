@@ -16,7 +16,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class SettingActivity extends AppCompatActivity{
     private static final String TAG = "SettingActivity";
-    private static final int ACTIVITY_NUM = 4;
+    private static final int ACTIVITY_NUM = 2;
     private Context mContext = SettingActivity.this;
 
     @Override

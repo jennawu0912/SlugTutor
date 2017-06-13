@@ -34,15 +34,15 @@ public class NavigationHelper {
                         context.startActivity(intent1);
                         break;
 
-                    case R.id.ic_contact:
-                        Intent intent2 = new Intent(context, ContactActivity.class); //ACTIVITY_NUM = 1
-                        context.startActivity(intent2);
-                        break;
+//                    case R.id.ic_contact:
+//                        Intent intent2 = new Intent(context, ContactActivity.class); //ACTIVITY_NUM = 1
+//                        context.startActivity(intent2);
+//                        break;
 
-                    case R.id.ic_home:
-                        Intent intent3 = new Intent(context, MainScreen.class); //ACTIVITY_NUM = 2
-                        context.startActivity(intent3);
-                        break;
+//                    case R.id.ic_home:
+//                        Intent intent3 = new Intent(context, MainScreen.class); //ACTIVITY_NUM = 2
+//                        context.startActivity(intent3);
+//                        break;
 
                     case R.id.ic_search:
                         Intent intent4 = new Intent(context, SearchActivity.class); //ACTIVITY_NUM = 3
