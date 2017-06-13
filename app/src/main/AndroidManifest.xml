@@ -17,13 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".StudentSignupActivity" />
+        <activity android:name=".Main_Area.ContactActivity"></activity>
+        <activity android:name=".Main_Area.MainScreen"></activity>
+        <activity android:name=".Main_Area.ProfileActivity"></activity>
+        <activity android:name=".Main_Area.Search.SearchActivity"></activity>
+        <activity android:name=".Main_Area.SettingActivity"></activity>
         <activity
             android:name=".ExtendedSignUp"
             android:label="@string/title_activity_extended_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StudentView" />
-        <activity android:name=".TutorView" />
-        <activity android:name=".MainStudentView"></activity>
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>
