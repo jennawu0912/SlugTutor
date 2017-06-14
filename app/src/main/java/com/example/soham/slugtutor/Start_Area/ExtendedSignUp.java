@@ -74,6 +74,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         String user_major = major.getText().toString();
         String user_course = course.getSelectedItem().toString();
         String phone = phoneNum.getText().toString();
+        String newphone = "(" + phone.substring(0,3) + ") " + phone.substring(3,6) + "-" + phone.substring(6,10);
         String email = contactEmail.getText().toString();
         String status = statusButton.getText().toString();
 
@@ -88,7 +89,7 @@ public class ExtendedSignUp extends AppCompatActivity {
 
         mDatabase.child("users").child(uid).child("firstname").setValue(first);
         mDatabase.child("users").child(uid).child("lastname").setValue(last);
-        mDatabase.child("users").child(uid).child("phonenumber").setValue(phone);
+        mDatabase.child("users").child(uid).child("phonenumber").setValue(newphone);
         mDatabase.child("users").child(uid).child("email").setValue(email);
         mDatabase.child("users").child(uid).child("major").setValue(user_major);
         mDatabase.child("users").child(uid).child("course").setValue(user_course);

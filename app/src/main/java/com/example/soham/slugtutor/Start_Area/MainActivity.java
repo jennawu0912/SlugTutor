@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                         } else {
                             Log.d("error: ", "log in failed");
+                            Toast.makeText(MainActivity.this, "Please use valid UCSC email or password",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

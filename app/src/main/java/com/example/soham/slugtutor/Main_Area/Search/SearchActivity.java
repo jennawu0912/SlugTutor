@@ -113,7 +113,7 @@ public class SearchActivity extends AppCompatActivity{
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(peopleAdapter);
 
-        TextView finder = (TextView) findViewById(R.id.Finder);
+        TextView finder = (TextView) findViewById(R.id.textView6);
         String status = userInf.getData();
 
         if(status.equals("Student")) {
