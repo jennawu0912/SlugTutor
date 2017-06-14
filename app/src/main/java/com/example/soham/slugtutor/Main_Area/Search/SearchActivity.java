@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,10 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.soham.slugtutor.Main_Area.NavigationHelper;
 import com.example.soham.slugtutor.R;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
@@ -29,7 +33,6 @@ import java.util.List;
  */
 
 public class SearchActivity extends AppCompatActivity{
-
     private class MyAdapter extends ArrayAdapter<ListElement> {
 
         int resource;
@@ -59,17 +62,6 @@ public class SearchActivity extends AppCompatActivity{
             // Fills in the view.
             TextView name = (TextView) newView.findViewById(R.id.name);
             name.setText(w.name);
-
-//            newView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DataSnapshot url = v.getTag().toString();
-//                    Intent i = new Intent(SearchActivity.this, DisplayInformationActivity.class);
-//                    i.putExtra("URL", url);
-//                    startActivity(i);
-//                }
-//            });
-
             return newView;
         }
     }
@@ -86,7 +78,6 @@ public class SearchActivity extends AppCompatActivity{
         String[] classes = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classes);
         dropdown.setAdapter(myAdapter);
-
         ArrayList<ListElement> entryList = new ArrayList<ListElement>();
         for(int i = 0; i < 20; i++) {
             ListElement in = new ListElement("Dustin");
@@ -98,6 +89,29 @@ public class SearchActivity extends AppCompatActivity{
         listView.setAdapter(adapter);
     }
 
+    public void classSearch(View view){
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mDatabaseRef = mDatabase.getReference();
+
+        Query query = mDatabaseRef.child("Students").orderByChild("Class1").equalTo("CMPE12");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot Students: dataSnapshot.getChildren()) {
+                        Log.d("Test", "testing");
+                        Log.d("Students ", Students.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+  
     private void setupBottomNavigationView(){
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx)findViewById(R.id.NavBot);
         NavigationHelper.setupNavigationView(bottomNavigationViewEx);

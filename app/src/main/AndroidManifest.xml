@@ -19,12 +19,11 @@
         <activity
             android:name=".Start_Area.ExtendedSignUp"
             android:label="@string/title_activity_extended_sign_up"
-
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".TEST_STUFF.FakeMain" />
-
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".SOHAM_CRAP.StudentView" />
         <activity android:name=".SOHAM_CRAP.TutorView" />
         <activity android:name=".SOHAM_CRAP.MainStudentView"></activity>
@@ -33,7 +32,6 @@
         <activity android:name=".Main_Area.ProfileActivity"></activity>
         <activity android:name=".Main_Area.Search.SearchActivity"></activity>
         <activity android:name=".Main_Area.SettingActivity"></activity>
-
     </application>
 
 </manifest>

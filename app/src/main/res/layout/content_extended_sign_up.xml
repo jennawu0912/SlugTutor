@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/FirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="First Name"
@@ -36,10 +36,11 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="405dp" />
 
+
     <EditText
         android:id="@+id/LastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Last Name"
@@ -84,34 +85,6 @@
         app:layout_constraintVertical_bias="0.727"
         app:layout_constraintHorizontal_bias="0.502" />
 
-    <!--
-    <Spinner
-        android:id="@+id/ClassSelector1"
-        android:layout_width="218dp"
-        android:layout_height="41dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="318dp" />
-
-    <Spinner
-        android:id="@+id/ClassSelector2"
-        android:layout_width="218dp"
-        android:layout_height="41dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="256dp" />
-
-    <Spinner
-        android:id="@+id/ClassSelector3"
-        android:layout_width="218dp"
-        android:layout_height="41dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="188dp" />
-    -->
 
     <Button
         android:id="@+id/SubmitButton"
@@ -124,27 +97,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
         android:layout_marginBottom="34dp"
         app:layout_constraintHorizontal_bias="0.847" />
-
-
-    <!--
-    <Button
-        android:id="@+id/Logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:onClick="logout"
-        android:textColor="#ffffff"
-        android:background="#0044FF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="39dp" />
-        -->
-
-
 
     <RadioGroup
         android:layout_width="239dp"
@@ -157,9 +111,8 @@
 
         <RadioButton
             android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
             android:text="Student" />
 
         <RadioButton
@@ -169,7 +122,5 @@
             android:layout_weight="1"
             android:text="Parent" />
     </RadioGroup>
-
-
 
 </android.support.constraint.ConstraintLayout>

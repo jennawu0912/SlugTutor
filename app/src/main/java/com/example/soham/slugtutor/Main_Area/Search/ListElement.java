@@ -1,6 +1,8 @@
 package com.example.soham.slugtutor.Main_Area.Search;
 
+
 import com.google.firebase.database.DataSnapshot;
+
 
 /**
  * Created by David Trang on 6/11/2017.
@@ -14,4 +16,5 @@ public class ListElement {
 
     public String name;
 //    public DataSnapshot student;
+
 }

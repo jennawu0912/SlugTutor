@@ -75,6 +75,7 @@ public class StudentSignupActivity extends AppCompatActivity {
                                     auth.signInWithEmailAndPassword(email, password);
                                     Toast.makeText(StudentSignupActivity.this, "Signed In" + task.getException(),
                                             Toast.LENGTH_SHORT).show();
+
                                     startActivity(new Intent(StudentSignupActivity.this, ExtendedSignUp.class));
                                     finish();
                                 }
