@@ -3,6 +3,8 @@ package com.example.soham.slugtutor.Start_Area;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneNumberUtils;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,23 +31,6 @@ public class ExtendedSignUp extends AppCompatActivity {
 
         //final FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        /*
-        Spinner dropdown1 = (Spinner)findViewById(R.id.ClassSelector1);
-        String[] items1 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items1);
-        dropdown1.setAdapter(adapter1);
-
-        Spinner dropdown2 = (Spinner)findViewById(R.id.ClassSelector2);
-        String[] items2 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items2);
-        dropdown2.setAdapter(adapter2);
-
-        Spinner dropdown3 = (Spinner)findViewById(R.id.ClassSelector3);
-        String[] items3 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items3);
-        dropdown3.setAdapter(adapter3);
-        */
-
         Button buttonStudent = (Button) findViewById(R.id.SubmitButton);
         buttonStudent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -56,26 +41,7 @@ public class ExtendedSignUp extends AppCompatActivity {
         });
     }
 
-
-    /**
-    protected void logout(View view){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (auth != null){
-            Log.d("Success","User signed out");
-            String uid = user.getUid();
-            Log.d("User id", uid);
-            auth.signOut();
-            Intent studentActivity = new Intent(ExtendedSignUp.this, MainActivity.class);
-            ExtendedSignUp.this.startActivity(studentActivity);
-        }
-        else{
-            Log.d("Failure","No user logged in");
-        }
-    }**/
-
     public void writeData (){
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         Log.d("User ID",uid);
@@ -86,18 +52,19 @@ public class ExtendedSignUp extends AppCompatActivity {
         EditText course = (EditText) findViewById(R.id.addCourse);
         String first = firstName.getText().toString();
         String last = lastName.getText().toString();
-        String user_major = major.getText().toString();
         String phone = phoneNum.getText().toString();
+        String newphone = "(" + phone.substring(0,3) + ") " + phone.substring(3,6) + "-" + phone.substring(6,10);
+        String user_major = major.getText().toString();
         String user_course = course.getText().toString();
         Log.d("First", firstName.getText().toString());
         Log.d("Last", lastName.getText().toString());
-        Log.d("Phone", phoneNum.getText().toString());
+        Log.d("Phone", newphone);
         Log.d("Major", major.getText().toString());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Log.d("Database", mDatabase.toString());
         mDatabase.child(USERGROUP).child(uid).child("firstname").setValue(first);
         mDatabase.child(USERGROUP).child(uid).child("lastname").setValue(last);
-        mDatabase.child(USERGROUP).child(uid).child("phonenumber").setValue(phone);
+        mDatabase.child(USERGROUP).child(uid).child("phonenumber").setValue(newphone);
         mDatabase.child(USERGROUP).child(uid).child("major").setValue(user_major);
         mDatabase.child(USERGROUP).child(uid).child("course").setValue(user_course);
 
