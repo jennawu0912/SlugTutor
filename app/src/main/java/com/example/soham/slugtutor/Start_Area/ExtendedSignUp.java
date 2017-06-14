@@ -53,18 +53,17 @@ public class ExtendedSignUp extends AppCompatActivity {
         String first = firstName.getText().toString();
         String last = lastName.getText().toString();
         String phone = phoneNum.getText().toString();
-        String newphone = "(" + phone.substring(0,3) + ") " + phone.substring(3,6) + "-" + phone.substring(6,10);
         String user_major = major.getText().toString();
         String user_course = course.getText().toString();
         Log.d("First", firstName.getText().toString());
         Log.d("Last", lastName.getText().toString());
-        Log.d("Phone", newphone);
+        Log.d("Phone", phone);
         Log.d("Major", major.getText().toString());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Log.d("Database", mDatabase.toString());
         mDatabase.child(USERGROUP).child(uid).child("firstname").setValue(first);
         mDatabase.child(USERGROUP).child(uid).child("lastname").setValue(last);
-        mDatabase.child(USERGROUP).child(uid).child("phonenumber").setValue(newphone);
+        mDatabase.child(USERGROUP).child(uid).child("phonenumber").setValue(phone);
         mDatabase.child(USERGROUP).child(uid).child("major").setValue(user_major);
         mDatabase.child(USERGROUP).child(uid).child("course").setValue(user_course);
 
