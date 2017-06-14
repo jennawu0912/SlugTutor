@@ -24,25 +24,21 @@ public class ExtendedSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extended_sign_up);
 
+//        Spinner dropdown1 = (Spinner)findViewById(R.id.ClassSelector1);
+//        String[] items1 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
+//        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items1);
+//        dropdown1.setAdapter(adapter1);
+//
+//        Spinner dropdown2 = (Spinner)findViewById(R.id.ClassSelector2);
+//        String[] items2 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
+//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items2);
+//        dropdown2.setAdapter(adapter2);
+//
+//        Spinner dropdown3 = (Spinner)findViewById(R.id.ClassSelector3);
+//        String[] items3 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
+//        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items3);
+//        dropdown3.setAdapter(adapter3);
 
-        //final FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        /*
-        Spinner dropdown1 = (Spinner)findViewById(R.id.ClassSelector1);
-        String[] items1 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items1);
-        dropdown1.setAdapter(adapter1);
-
-        Spinner dropdown2 = (Spinner)findViewById(R.id.ClassSelector2);
-        String[] items2 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items2);
-        dropdown2.setAdapter(adapter2);
-
-        Spinner dropdown3 = (Spinner)findViewById(R.id.ClassSelector3);
-        String[] items3 = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items3);
-        dropdown3.setAdapter(adapter3);
-        */
 
         Button buttonStudent = (Button) findViewById(R.id.SubmitButton);
         buttonStudent.setOnClickListener(new View.OnClickListener(){
@@ -53,24 +49,6 @@ public class ExtendedSignUp extends AppCompatActivity {
             }
         });
     }
-
-
-    /**
-    protected void logout(View view){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (auth != null){
-            Log.d("Success","User signed out");
-            String uid = user.getUid();
-            Log.d("User id", uid);
-            auth.signOut();
-            Intent studentActivity = new Intent(ExtendedSignUp.this, MainActivity.class);
-            ExtendedSignUp.this.startActivity(studentActivity);
-        }
-        else{
-            Log.d("Failure","No user logged in");
-        }
-    }**/
 
     public void writeData (){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -91,10 +69,11 @@ public class ExtendedSignUp extends AppCompatActivity {
         Log.d("Major", major.getText().toString());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Log.d("Database", mDatabase.toString());
-        mDatabase.child(uid).child("firstname").setValue(first);
-        mDatabase.child(uid).child("lastname").setValue(last);
-        mDatabase.child(uid).child("phonenumber").setValue(phone);
-        mDatabase.child(uid).child("major").setValue(user_major);
-        mDatabase.child(uid).child("course").setValue(user_course);
+
+        mDatabase.child("Students").child(uid).child("firstname").setValue(first);
+        mDatabase.child("Students").child(uid).child("lastname").setValue(last);
+        mDatabase.child("Students").child(uid).child("phonenumber").setValue(phone);
+        mDatabase.child("Students").child(uid).child("major").setValue(user_major);
+        mDatabase.child("Students").child(uid).child("course").setValue(user_course);
     }
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.soham.slugtutor.Main_Area.NavigationHelper;
 import com.example.soham.slugtutor.R;
+import com.google.firebase.database.DataSnapshot;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
@@ -59,15 +60,15 @@ public class SearchActivity extends AppCompatActivity{
             TextView name = (TextView) newView.findViewById(R.id.name);
             name.setText(w.name);
 
-            newView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String url = v.getTag().toString();
-                    Intent i = new Intent(SearchActivity.this, DisplayInformationActivity.class);
-                    i.putExtra("URL", url);
-                    startActivity(i);
-                }
-            });
+//            newView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    DataSnapshot url = v.getTag().toString();
+//                    Intent i = new Intent(SearchActivity.this, DisplayInformationActivity.class);
+//                    i.putExtra("URL", url);
+//                    startActivity(i);
+//                }
+//            });
 
             return newView;
         }
