@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.example.soham.slugtutor.R;
 import com.example.soham.slugtutor.Start_Area.MainActivity;
-import com.example.soham.slugtutor.TEST_STUFF.FakeMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

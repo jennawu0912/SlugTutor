@@ -1,4 +1,4 @@
-package com.example.soham.slugtutor.SOHAM_CRAP;
+package com.example.soham.slugtutor.TEST.SOHAM_CRAP;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

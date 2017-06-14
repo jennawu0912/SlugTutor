@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import com.example.soham.slugtutor.Main_Area.ProfileActivity;
 import com.example.soham.slugtutor.Main_Area.Search.SearchActivity;
 
 import android.widget.Toast;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d("success: ", "log in worked");
-                            Intent studentActivity = new Intent(MainActivity.this, SearchActivity.class);
+                            Intent studentActivity = new Intent(MainActivity.this, ProfileActivity.class);
                             MainActivity.this.startActivity(studentActivity);
                             finish();
                         } else {

@@ -30,28 +30,29 @@ import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity{
     private static final String TAG = "ProfileActivity";
-    private static final int ACTIVITY_NUM = 0;
+    private static final int ACTIVITY_NUM = 1;
     private Context mContext = ProfileActivity.this;
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mDatabaseRef = mDatabase.getReference();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         setupBottomNavigationView();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = new String();
+
         if (user != null) {
             uid = user.getUid();
-            Log.d("uid : ", uid);
         }else {
             Log.d("error : ", "user is null");
         }
 
         // Initialize Database
-        mDatabaseRef = mDatabaseRef.child("Students").child(uid);
+        mDatabaseRef = mDatabaseRef.child("users").child(uid);
     }
 
 
@@ -68,8 +69,7 @@ public class ProfileActivity extends AppCompatActivity{
     public void onStart() {
         super.onStart();
         final List<String> info = new ArrayList<String>();
-        // Add value event listener to the post
-        // [START post_value_event_listener]
+
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -82,26 +82,26 @@ public class ProfileActivity extends AppCompatActivity{
                 TextView user_major = (TextView) findViewById(R.id.display_major);
                 TextView user_phone = (TextView) findViewById(R.id.display_phone);
                 TextView user_course = (TextView) findViewById(R.id.display_course);
+                TextView user_status = (TextView) findViewById(R.id.display_status);
+                TextView user_email = (TextView) findViewById(R.id.display_email);
 
-                user_name.setText(info.get(1) + " " + info.get(2));
-                user_major.setText(info.get(3));
-                user_phone.setText(info.get(4));
+                user_name.setText(info.get(2) + " " + info.get(3));
+                user_major.setText(info.get(4));
+                user_phone.setText(info.get(5));
+                user_email.setText(info.get(1));
                 user_course.setText(info.get(0));
+                user_status.setText(info.get(6));
+
+                UserInfo userInf = UserInfo.getInstance();
+                userInf.setData(user_status.getText().toString());
+                Log.d ("User infO", userInf.getData());
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                //Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
-                //Toast.makeText(PostDetailActivity.this, "Failed to load post.",
-                //Toast.LENGTH_SHORT).show();
-                // [END_EXCLUDE]
             }
         };
         mDatabaseRef.addValueEventListener(postListener);
-        // [END post_value_event_listener]
-
     }
 }

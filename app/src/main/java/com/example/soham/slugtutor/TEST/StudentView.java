@@ -1,11 +1,7 @@
-package com.example.soham.slugtutor.SOHAM_CRAP;
-
+package com.example.soham.slugtutor.TEST;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 
 import com.example.soham.slugtutor.R;
 

@@ -1,7 +1,11 @@
-package com.example.soham.slugtutor;
+package com.example.soham.slugtutor.TEST.SOHAM_CRAP;
+
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+
+import com.example.soham.slugtutor.R;
 
 public class TutorView extends AppCompatActivity {
 
