@@ -69,11 +69,11 @@ public class StudentSignupActivity extends AppCompatActivity {
                                 //Toast.makeText(StudentSignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(StudentSignupActivity.this, "Please use valid UCSC email or password",
+                                    Toast.makeText(StudentSignupActivity.this, "Please use valid UCSC email or password" + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     auth.signInWithEmailAndPassword(email, password);
-                                    //Toast.makeText(StudentSignupActivity.this, "Signed In",
+                                    //Toast.makeText(StudentSignupActivity.this, "Signed In" + task.getException(),
                                             //Toast.LENGTH_SHORT).show();
 
                                     startActivity(new Intent(StudentSignupActivity.this, ExtendedSignUp.class));

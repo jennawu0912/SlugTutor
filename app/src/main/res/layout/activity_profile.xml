@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#e0fbff"
     android:layout_height="match_parent">
 
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
@@ -22,15 +23,29 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
         android:hint="First Name"
         android:ems="8"
-        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.163" />
 
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="#0044FF"
+        android:gravity="center"
+        android:text="Your Profile"
+        android:textColor="#ffffff"
+        android:textSize="11pt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id= "@+id/display_lastname"
@@ -38,13 +53,12 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
         android:hint="Last Name"
         android:ems="8"
-        app:layout_constraintTop_toBottomOf="@id/display_name"
+        app:layout_constraintTop_toBottomOf="@+id/display_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.497"
         />
 
 
@@ -54,14 +68,12 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
         android:ems="8"
 
-        app:layout_constraintTop_toBottomOf="@id/display_lastname"
+        app:layout_constraintTop_toBottomOf="@+id/display_lastname"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        />
+        app:layout_constraintHorizontal_bias="0.497" />
 
     <EditText
         android:id = "@+id/display_major"
@@ -69,13 +81,13 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="7dp"
         android:hint="Major"
         android:ems="8"
-        app:layout_constraintTop_toBottomOf="@id/display_status"
+        app:layout_constraintTop_toBottomOf="@+id/display_status"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.497"
         />
 
     <EditText
@@ -84,13 +96,12 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
         android:hint="Phone Number"
         android:ems="8"
-        app:layout_constraintTop_toBottomOf="@id/display_major"
+        app:layout_constraintTop_toBottomOf="@+id/display_major"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.497"
         />
 
     <EditText
@@ -99,14 +110,14 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="1dp"
         android:hint="Email"
         android:ems="8"
 
-        app:layout_constraintTop_toBottomOf="@id/display_phone"
+        app:layout_constraintTop_toBottomOf="@+id/display_phone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.497"
 
         />
 
@@ -116,13 +127,12 @@
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="0dp"
         android:hint="Course"
         android:ems="8"
         app:layout_constraintTop_toBottomOf="@+id/display_email"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.497"
         />
 
     <ImageButton
@@ -131,16 +141,22 @@
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.759" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="#ffffff"
+        android:background="#0044FF"
         app:layout_constraintTop_toBottomOf="@+id/display_course"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_bias="0.637" />
 </android.support.constraint.ConstraintLayout>

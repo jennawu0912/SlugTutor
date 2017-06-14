@@ -7,6 +7,17 @@
     android:background="#e0fbff"
     tools:context=".Main_Area.Search.SearchActivity">
 
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_grey_border_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/NavBot"
+        app:menu="@menu/menu_navigation"
+        />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="0dp"
@@ -20,18 +31,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/white_grey_border_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/NavBot"
-        app:menu="@menu/menu_navigation"
-        />
-
 
     <Spinner
         android:id="@+id/ClassSelection"
@@ -50,9 +49,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:text ="@string/search"
-        android:onClick="searchButton"
         android:textColor="#ffffff"
         android:background="#0044FF"
+        android:onClick="searchButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ClassSelection"
