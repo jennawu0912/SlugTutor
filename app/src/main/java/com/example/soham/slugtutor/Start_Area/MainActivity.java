@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.soham.slugtutor.Main_Area.Search.SearchActivity;
 import com.example.soham.slugtutor.TEST.FakeMain;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                         } else {
                             Log.d("error: ", "log in failed");
+                            Toast.makeText(MainActivity.this, "Please use valid UCSC email or password",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
