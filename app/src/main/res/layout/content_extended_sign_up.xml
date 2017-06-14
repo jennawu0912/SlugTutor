@@ -76,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
-        android:id="@+id/addCourse3"
+        android:id="@+id/addCourse"
         android:layout_width="308dp"
         android:layout_height="42dp"
         android:ems="10"

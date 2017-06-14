@@ -36,7 +36,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity{
 
     private DatabaseReference mDatabaseRef;
-    final String USERGROUP = "JennasUsers";
+    final String USERGROUP = "Students";
 
     private ValueEventListener mPostListener;
 
@@ -106,9 +106,10 @@ public class SearchActivity extends AppCompatActivity{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
+                Log.d("number of students: ", Long.toString(dataSnapshot.getChildrenCount()));
                 for (DataSnapshot msgSnapShot: dataSnapshot.getChildren()) {
-                    String temp = msgSnapShot.child("firstname").getValue(String.class);
-                    //Log.d("name: ", temp);
+                    String temp = msgSnapShot.child("FirstName").getValue(String.class);
+                    Log.d("name: ", temp);
                     info.add(temp);
                 }
 
