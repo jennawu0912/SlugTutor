@@ -15,7 +15,7 @@ import com.example.soham.slugtutor.R;
 
 public class DisplayInformationActivity extends AppCompatActivity{
     String name;
-    String phone;
+    String newphone;
     String email;
 
     @Override
@@ -27,21 +27,21 @@ public class DisplayInformationActivity extends AppCompatActivity{
             finish();
         }else{
             name = info.getString("name");
-            phone = info.getString("phone");
+            newphone = info.getString("phone");
             email = info.getString("email");
         }
 
         TextView display_name = (TextView) findViewById(R.id.display_name);
         display_name.setText(name);
         TextView display_phone = (TextView) findViewById(R.id.display_phone);
-        display_phone.setText(phone);
+        display_phone.setText(newphone);
         TextView display_email = (TextView) findViewById(R.id.display_email);
         display_email.setText(email);
     }
 
     protected void call(View v){
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + phone));
+        intent.setData(Uri.parse("tel:" + newphone));
         startActivity(intent);
     }
 
