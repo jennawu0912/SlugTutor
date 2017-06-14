@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,22 +68,35 @@ public class ExtendedSignUp extends AppCompatActivity {
     public void writeData (View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
+
         EditText firstName = (EditText) findViewById(R.id.FirstName);
         EditText lastName = (EditText) findViewById(R.id.LastName);
         Spinner class1 = (Spinner) findViewById(R.id.ClassSelector1);
         Spinner class2 = (Spinner) findViewById(R.id.ClassSelector2);
         Spinner class3 = (Spinner) findViewById(R.id.ClassSelector3);
+        RadioButton isStudent = (RadioButton) findViewById(R.id.isStudent);
+        RadioButton isTutor = (RadioButton) findViewById(R.id.isTutor);
+
         String firstNameStr = firstName.getText().toString();
         String lastNameStr = lastName.getText().toString();
         String class1Str = class1.getSelectedItem().toString();
         String class2Str = class2.getSelectedItem().toString();
         String class3Str = class3.getSelectedItem().toString();
+        //boolean student = isStudent.isChecked();
+        //boolean tutor = isTutor.isChecked();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child(uid).child("FirstName").setValue(firstNameStr);
-        mDatabase.child(uid).child("LastName").setValue(lastNameStr);
-        mDatabase.child(uid).child("Class1").setValue(class1Str);
-        mDatabase.child(uid).child("Class2").setValue(class2Str);
-        mDatabase.child(uid).child("Class3").setValue(class3Str);
+        mDatabase.child("Students").child(uid).child("FirstName").setValue(firstNameStr);
+        mDatabase.child("Students").child(uid).child("LastName").setValue(lastNameStr);
+        mDatabase.child("Students").child(uid).child("Class1").setValue(class1Str);
+        mDatabase.child("Students").child(uid).child("Class2").setValue(class2Str);
+        mDatabase.child("Students").child(uid).child("Class3").setValue(class3Str);
+//        mDatabase.child(uid).child("Classes").child("Class1").setValue(class1Str);
+//        mDatabase.child(uid).child("Classes").child("Class2").setValue(class2Str);
+//        mDatabase.child(uid).child("Classes").child("Class3").setValue(class3Str);
+        //mDatabase.child(uid).child("isStudent").setValue(student);
+        //mDatabase.child(uid).child("isTutor").setValue(tutor);
+
         Intent studentActivity = new Intent(ExtendedSignUp.this, MainStudentView.class);
         ExtendedSignUp.this.startActivity(studentActivity);
     }

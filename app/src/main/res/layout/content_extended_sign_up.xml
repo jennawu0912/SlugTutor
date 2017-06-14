@@ -95,14 +95,14 @@
         app:layout_constraintRight_toRightOf="parent" >
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/isStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Student" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/isTutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
