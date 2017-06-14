@@ -16,83 +16,131 @@
         app:menu="@menu/menu_navigation"
         />
 
-    <TextView
+    <EditText
         android:id= "@+id/display_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="First Name"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".25"
+        app:layout_constraintHorizontal_bias="0.50"
         />
 
-    <TextView
-        android:id = "@+id/display_status"
+
+    <EditText
+        android:id= "@+id/display_lastname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Last Name"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@id/display_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".30"
+        app:layout_constraintHorizontal_bias="0.50"
         />
 
-    <TextView
+
+    <EditText
+        android:id = "@+id/display_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="0dp"
+        android:ems="8"
+
+        app:layout_constraintTop_toBottomOf="@id/display_lastname"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        />
+
+    <EditText
         android:id = "@+id/display_major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Major"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@id/display_status"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".30"
+        app:layout_constraintHorizontal_bias="0.50"
         />
 
-    <TextView
+    <EditText
         android:id = "@+id/display_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Phone Number"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@id/display_major"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".30"
+        app:layout_constraintHorizontal_bias="0.50"
         />
 
-    <TextView
+    <EditText
         android:id = "@+id/display_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Email"
+        android:ems="8"
+
         app:layout_constraintTop_toBottomOf="@id/display_phone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".30"
+        app:layout_constraintHorizontal_bias="0.50"
 
         />
 
-    <TextView
+    <EditText
         android:id = "@+id/display_course"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12pt"
+        android:textSize="10pt"
         android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Course"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@+id/display_email"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias=".30"
+        app:layout_constraintHorizontal_bias="0.50"
         />
 
+    <ImageButton
+        android:id="@+id/editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        app:layout_constraintTop_toBottomOf="@+id/display_course"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp" />
 </android.support.constraint.ConstraintLayout>
