@@ -9,12 +9,14 @@ import com.google.firebase.database.DataSnapshot;
  */
 
 public class ListElement {
-    ListElement(String name){
+    ListElement(String name, String phone){
         this.name = name;
-//        this.student = student;
+        this.phone = phone;
     }
 
     public String name;
+    public String email;
+    public String phone;
 //    public DataSnapshot student;
 
 }

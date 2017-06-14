@@ -1,17 +1,9 @@
 package com.example.soham.slugtutor.Main_Area;
 
 import android.content.Context;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.telephony.PhoneNumberUtils;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.soham.slugtutor.R;
-import com.example.soham.slugtutor.Start_Area.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,8 +32,8 @@ public class ProfileActivity extends AppCompatActivity{
     private static final String TAG = "ProfileActivity";
     private static final int ACTIVITY_NUM = 0;
     private Context mContext = ProfileActivity.this;
-    private DatabaseReference mDatabaseRef;
-    private ValueEventListener mPostListener;
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mDatabaseRef = mDatabase.getReference();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
@@ -51,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity{
         setupBottomNavigationView();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = "";
+        String uid = new String();
         if (user != null) {
             uid = user.getUid();
             Log.d("uid : ", uid);
@@ -60,9 +51,7 @@ public class ProfileActivity extends AppCompatActivity{
         }
 
         // Initialize Database
-
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(uid);
-
+        mDatabaseRef = mDatabaseRef.child("Students").child(uid);
     }
 
 
@@ -84,10 +73,8 @@ public class ProfileActivity extends AppCompatActivity{
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
                 for (DataSnapshot msgSnapShot: dataSnapshot.getChildren()) {
                     String temp = msgSnapShot.getValue(String.class);
-                    Log.d("first name: ", temp);
                     info.add(temp);
                 }
 
@@ -115,10 +102,6 @@ public class ProfileActivity extends AppCompatActivity{
         };
         mDatabaseRef.addValueEventListener(postListener);
         // [END post_value_event_listener]
-
-        // Keep copy of post listener so we can remove it when app stops
-        mPostListener = postListener;
-
 
     }
 }

@@ -7,4 +7,7 @@
     <string name="find_stdudent">Find Student</string>
     <string name="find_teacher">Find Teacher</string>
     <string name="name">name</string>
+    <string name="search">Search</string>
+    <string name="logout">Logout</string>
+    <string name ="createProfile">Create Your Profile</string>
 </resources>
