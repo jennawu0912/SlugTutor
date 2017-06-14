@@ -66,15 +66,16 @@ public class StudentSignupActivity extends AppCompatActivity {
                         .addOnCompleteListener(StudentSignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                //Toast.makeText(StudentSignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(StudentSignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(StudentSignupActivity.this, "Please use valid UCSC email or password",
+                                    Toast.makeText(StudentSignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     auth.signInWithEmailAndPassword(email, password);
-                                    //Toast.makeText(StudentSignupActivity.this, "Signed In" + task.getException(),
-                                            //Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(StudentSignupActivity.this, "Signed In" + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+
                                     startActivity(new Intent(StudentSignupActivity.this, ExtendedSignUp.class));
                                     finish();
                                 }

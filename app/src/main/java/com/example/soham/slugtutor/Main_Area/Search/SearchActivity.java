@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.soham.slugtutor.Main_Area.NavigationHelper;
 import com.example.soham.slugtutor.R;
 import com.google.firebase.database.DataSnapshot;
@@ -34,12 +33,6 @@ import java.util.List;
  */
 
 public class SearchActivity extends AppCompatActivity{
-
-    private DatabaseReference mDatabaseRef;
-    final String USERGROUP = "Students";
-
-    private ValueEventListener mPostListener;
-
     private class MyAdapter extends ArrayAdapter<ListElement> {
 
         int resource;
@@ -69,24 +62,12 @@ public class SearchActivity extends AppCompatActivity{
             // Fills in the view.
             TextView name = (TextView) newView.findViewById(R.id.name);
             name.setText(w.name);
-
-            newView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String url = v.getTag().toString();
-                    Intent i = new Intent(SearchActivity.this, DisplayInformationActivity.class);
-                    i.putExtra("URL", url);
-                    startActivity(i);
-                }
-            });
-
             return newView;
         }
     }
     private static final String TAG = "ContactActivity";
     private static final int ACTIVITY_NUM = 1;
     private Context mContext = SearchActivity.this;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
@@ -97,63 +78,40 @@ public class SearchActivity extends AppCompatActivity{
         String[] classes = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classes);
         dropdown.setAdapter(myAdapter);
+        ArrayList<ListElement> entryList = new ArrayList<ListElement>();
+        for(int i = 0; i < 20; i++) {
+            ListElement in = new ListElement("Dustin");
+            entryList.add(in);
+        }
 
+        MyAdapter adapter = new MyAdapter(this, R.layout.information_layout, entryList);
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
+    }
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(USERGROUP);
-        final List<String> info = new ArrayList<String>();
+    public void classSearch(View view){
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mDatabaseRef = mDatabase.getReference();
 
-        ValueEventListener postListener = new ValueEventListener() {
+        Query query = mDatabaseRef.child("Students").orderByChild("Class1").equalTo("CMPE12");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Log.d("number of students: ", Long.toString(dataSnapshot.getChildrenCount()));
-                for (DataSnapshot msgSnapShot: dataSnapshot.getChildren()) {
-                    String temp = msgSnapShot.child("FirstName").getValue(String.class);
-                    Log.d("name: ", temp);
-                    info.add(temp);
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot Students: dataSnapshot.getChildren()) {
+                        Log.d("Test", "testing");
+                        Log.d("Students ", Students.toString());
+                    }
                 }
-
-                ArrayList<ListElement> entryList = new ArrayList<ListElement>();
-                for(int i = 0; i < info.size(); i++) {
-                    ListElement in = new ListElement(info.get(i));
-                    entryList.add(in);
-                    Log.d("test: ", info.get(i));
-                }
-
-
-                MyAdapter adapter = new MyAdapter(SearchActivity.this, R.layout.information_layout, entryList);
-                ListView listView = (ListView) findViewById(R.id.list_view);
-                listView.setAdapter(adapter);
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                //Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
-                //Toast.makeText(PostDetailActivity.this, "Failed to load post.",
-                //Toast.LENGTH_SHORT).show();
-                // [END_EXCLUDE]
+
             }
-        };
-        mDatabaseRef.addValueEventListener(postListener);
-        // [END post_value_event_listener]
-
-        // Keep copy of post listener so we can remove it when app stops
-        mPostListener = postListener;
-
-
-        Log.d("test: ", Integer.toString(info.size()));
-
-
-
-
-
+        });
     }
-
-
-
+  
     private void setupBottomNavigationView(){
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx)findViewById(R.id.NavBot);
         NavigationHelper.setupNavigationView(bottomNavigationViewEx);

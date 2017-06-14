@@ -1,23 +1,10 @@
-package com.example.soham.slugtutor.Main_Area;
-
-import android.content.Context;
-
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+package com.example.soham.slugtutor.TEST_STUFF;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.PhoneNumberUtils;
-
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.soham.slugtutor.R;
 import com.example.soham.slugtutor.Start_Area.MainActivity;
@@ -25,30 +12,34 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.google.firebase.database.DatabaseReference;
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by David Trang on 6/11/2017.
+ * Created by jenna on 6/7/2017.
  */
 
-public class ProfileActivity extends AppCompatActivity{
-    private static final String TAG = "ProfileActivity";
-    private static final int ACTIVITY_NUM = 0;
-    private Context mContext = ProfileActivity.this;
+public class FakeMain extends AppCompatActivity{
+
     private DatabaseReference mDatabaseRef;
+
     private ValueEventListener mPostListener;
 
+
+    NavigationView navigationView;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        setupBottomNavigationView();
+        setContentView(R.layout.fake_main);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = "";
@@ -59,25 +50,23 @@ public class ProfileActivity extends AppCompatActivity{
             Log.d("error : ", "user is null");
         }
 
-        // Initialize Database
 
+        // Initialize Database
         mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(uid);
 
-    }
+        Button buttonLogout = (Button) findViewById(R.id.Logout);
+        buttonLogout.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                logout();
+            }
+        });
 
-
-    private void setupBottomNavigationView(){
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.NavBot);
-        NavigationHelper.setupNavigationView(bottomNavigationViewEx);
-        NavigationHelper.enableNavigation(mContext, bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
-        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
-        menuItem.setChecked(true);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        String firstname;
         final List<String> info = new ArrayList<String>();
         // Add value event listener to the post
         // [START post_value_event_listener]
@@ -90,13 +79,14 @@ public class ProfileActivity extends AppCompatActivity{
                     Log.d("first name: ", temp);
                     info.add(temp);
                 }
-
-                TextView user_name = (TextView) findViewById(R.id.display_name);
+                TextView user_first = (TextView) findViewById(R.id.display_first);
+                TextView user_last = (TextView) findViewById(R.id.display_last);
                 TextView user_major = (TextView) findViewById(R.id.display_major);
                 TextView user_phone = (TextView) findViewById(R.id.display_phone);
                 TextView user_course = (TextView) findViewById(R.id.display_course);
 
-                user_name.setText(info.get(1) + " " + info.get(2));
+                user_first.setText(info.get(1));
+                user_last.setText(info.get(2));
                 user_major.setText(info.get(3));
                 user_phone.setText(info.get(4));
                 user_course.setText(info.get(0));
@@ -109,7 +99,7 @@ public class ProfileActivity extends AppCompatActivity{
                 //Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                 // [START_EXCLUDE]
                 //Toast.makeText(PostDetailActivity.this, "Failed to load post.",
-                //Toast.LENGTH_SHORT).show();
+                        //Toast.LENGTH_SHORT).show();
                 // [END_EXCLUDE]
             }
         };
@@ -120,5 +110,21 @@ public class ProfileActivity extends AppCompatActivity{
         mPostListener = postListener;
 
 
+    }
+
+    protected void logout(){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null){
+            Log.d("Success","User signed out");
+            String uid = user.getUid();
+            Log.d("User id", uid);
+            auth.signOut();
+            Intent studentActivity = new Intent(FakeMain.this, MainActivity.class);
+            FakeMain.this.startActivity(studentActivity);
+        }
+        else{
+            Log.d("Failure","No user logged in");
+        }
     }
 }

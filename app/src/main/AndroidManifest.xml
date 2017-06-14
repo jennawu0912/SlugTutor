@@ -22,8 +22,8 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".TEST_STUFF.FakeMain" />
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SOHAM_CRAP.StudentView" />
         <activity android:name=".SOHAM_CRAP.TutorView" />
         <activity android:name=".SOHAM_CRAP.MainStudentView"></activity>
@@ -32,8 +32,6 @@
         <activity android:name=".Main_Area.ProfileActivity"></activity>
         <activity android:name=".Main_Area.Search.SearchActivity"></activity>
         <activity android:name=".Main_Area.SettingActivity"></activity>
-
-        <!--<activity android:name=".FakeMain" />-->
     </application>
 
 </manifest>
