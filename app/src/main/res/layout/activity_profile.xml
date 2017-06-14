@@ -86,4 +86,12 @@
         android:layout_marginEnd="28dp"
         app:layout_constraintHorizontal_bias="0.554" />
 
+    <ImageButton
+        android:id="@+id/updateProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        tools:layout_editor_absoluteX="322dp"
+        tools:layout_editor_absoluteY="3dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.soham.slugtutor.Main_Area;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,12 +11,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.soham.slugtutor.R;
+import com.example.soham.slugtutor.Start_Area.ExtendedSignUp;
 import com.example.soham.slugtutor.Start_Area.MainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,6 +65,13 @@ public class ProfileActivity extends AppCompatActivity{
         buttonLogout.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 logout();
+            }
+        });
+
+        ImageButton buttonUpdate = (ImageButton) findViewById(R.id.updateProfile);
+        buttonUpdate.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                updateProfile();
             }
         });
     }
@@ -135,4 +148,30 @@ public class ProfileActivity extends AppCompatActivity{
             Log.d("Failure","No user logged in");
         }
     }
+
+    private void updateProfile() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName("Tiffany")
+                .build();
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "User Profile updated");
+                        }
+                    }
+                });
+
+        Intent i = new Intent(ProfileActivity.this, ExtendedSignUp.class);
+        startActivity(i);
+        self.databaseRef.child("student").child(user)
+
+
+    }
+
+
 }
