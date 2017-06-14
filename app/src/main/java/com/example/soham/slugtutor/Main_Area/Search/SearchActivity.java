@@ -19,7 +19,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.soham.slugtutor.Main_Area.NavigationHelper;
+import com.example.soham.slugtutor.Main_Area.UserInfo;
 import com.example.soham.slugtutor.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,11 +39,14 @@ import java.util.List;
  */
 
 public class SearchActivity extends AppCompatActivity{
-
+    UserInfo userInf = UserInfo.getInstance();
     private Spinner dropdown;
     private ListView listView;
     private MyAdapter peopleAdapter;
     private ArrayList<ListElement> entryList;
+    private String status;
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mDatabaseRef = mDatabase.getReference();
 
     private class MyAdapter extends ArrayAdapter<ListElement> {
 
@@ -56,7 +62,7 @@ public class SearchActivity extends AppCompatActivity{
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LinearLayout newView;
-            ListElement w = getItem(position);
+            final ListElement w = getItem(position);
 
             // Inflate a new view if necessary.
             if (convertView == null) {
@@ -72,28 +78,30 @@ public class SearchActivity extends AppCompatActivity{
             TextView name = (TextView) newView.findViewById(R.id.name);
             name.setText(w.name);
 
-//            newView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    DataSnapshot url = v.getTag().toString();
-//                    Intent i = new Intent(SearchActivity.this, DisplayInformationActivity.class);
-//                    i.putExtra("URL", url);
-//                    startActivity(i);
-//                }
-//            });
+            newView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, DisplayInformationActivity.class);
+                    i.putExtra("name", w.name);
+                    i.putExtra("phone",w.phone);
+                    i.putExtra("email",w.email);
+                    startActivity(i);
+                }
+            });
 
             return newView;
         }
     }
     private static final String TAG = "ContactActivity";
-    private static final int ACTIVITY_NUM = 1;
+    private static final int ACTIVITY_NUM = 0;
     private Context mContext = SearchActivity.this;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        Log.d ("Different activity", userInf.getData());
         setupBottomNavigationView();
         dropdown = (Spinner)findViewById(R.id.ClassSelection);
         String[] classes = new String[]{"", "CMPE12", "CMPS101", "CMPS130"};
@@ -104,6 +112,15 @@ public class SearchActivity extends AppCompatActivity{
         peopleAdapter = new MyAdapter(this, R.layout.information_layout, entryList);
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(peopleAdapter);
+
+        TextView finder = (TextView) findViewById(R.id.Finder);
+        String status = userInf.getData();
+
+        if(status.equals("Student")) {
+            finder.setText("Find Tutor");
+        }else{
+            finder.setText("Find Student");
+        }
     }
 
     private void setupBottomNavigationView(){
@@ -126,21 +143,25 @@ public class SearchActivity extends AppCompatActivity{
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabaseRef = mDatabase.getReference();
         String classChoice = dropdown.getSelectedItem().toString();
-        Query query = mDatabaseRef.child("Students").orderByChild("course").equalTo(classChoice);
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference user = mDatabaseRef.child("users").child(uid);
+        Query query;
+        query = mDatabaseRef.child("users").orderByChild("course").equalTo(classChoice);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot Students: dataSnapshot.getChildren()) {
-                        Log.d("Students ", Students.toString());
                         String firstName = Students.child("firstname").getValue().toString();
                         String lastName = Students.child("lastname").getValue().toString();
                         String fullName = firstName + " " + lastName;
                         String number = Students.child("phonenumber").getValue().toString();
-                        Log.d("Full Name", fullName);
-                        entryList.add(new ListElement(fullName, number));
-                        Log.d("Test", "testing");
+                        String email = Students.child("email").getValue().toString();
+                        String status = Students.child("status").getValue().toString();
+                        if(!status.equals(userInf.getData())) {
+                            entryList.add(new ListElement(fullName, number, email));
+                        }
                     }
                 }
                 listView.setAdapter(peopleAdapter);
@@ -151,4 +172,5 @@ public class SearchActivity extends AppCompatActivity{
             }
         });
     }
+
 }

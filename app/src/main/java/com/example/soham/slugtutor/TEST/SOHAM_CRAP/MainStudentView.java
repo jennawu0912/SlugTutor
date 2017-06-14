@@ -1,11 +1,13 @@
-package com.example.soham.slugtutor;
+package com.example.soham.slugtutor.TEST.SOHAM_CRAP;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.soham.slugtutor.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

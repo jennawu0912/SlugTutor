@@ -30,7 +30,7 @@ public class NavigationHelper {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.ic_profile:
-                        Intent intent1 = new Intent(context, ProfileActivity.class); //ACTIVITY_NUM = 0
+                        Intent intent1 = new Intent(context, ProfileActivity.class); //ACTIVITY_NUM = 1
                         context.startActivity(intent1);
                         break;
 
@@ -45,7 +45,7 @@ public class NavigationHelper {
 //                        break;
 
                     case R.id.ic_search:
-                        Intent intent4 = new Intent(context, SearchActivity.class); //ACTIVITY_NUM = 3
+                        Intent intent4 = new Intent(context, SearchActivity.class); //ACTIVITY_NUM = 0
                         context.startActivity(intent4);
                         break;
 
